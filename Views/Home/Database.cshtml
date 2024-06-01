@@ -1,0 +1,28 @@
+@model dbContext
+
+@{
+    ViewData["Title"] = "Database";
+}
+
+@* <p>Sono stati registrati @Model.Utenti.Count() utenti... </p> *@
+
+<table class="table">
+    <thead>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Indirizzo</th>
+    </thead>
+    @{ 
+        foreach(var item in @Model.Utenti) {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Cognome</td>
+                <td>@item.EMail</td>
+                <td>@item.Password</td>
+                <td>@item.Indirizzo</td>
+            </tr>
+        }
+    }
+</table>

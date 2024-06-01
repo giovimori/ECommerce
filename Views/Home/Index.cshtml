@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@model dbContext
+
+
+
+<b>Mail:</b> 
+@HttpContextAccessor?.HttpContext?.Session.GetString("EMail")
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacia Palazzetti - La tua nuova farmacia online</title>
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #008000;
+        }
+        h2 {
+            color: #b1c4a7;
+        }
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><img src="/img/logo1.png" width="450" height="auto" ></h1>
+        <br>
+        <p>Benvenuti nella nostra nuova farmacia online, dove la vostra salute è la nostra priorità. Con Farmacia Palazzetti, avete accesso a una vasta selezione di farmaci e prodotti per la cura del corpo, tutto comodamente disponibile a portata di clic.</p>
+        <h2>La nostra missione</h2>
+        <p>La missione di Farmacia Palazzetti è fornire ai nostri clienti una soluzione conveniente, affidabile e sicura per le loro esigenze di salute. Ci impegniamo a offrire prodotti di alta qualità e un servizio clienti impeccabile.</p>
+        <h2>Cosa offriamo</h2>
+        <p>Presso Farmacia Palazzetti troverete una vasta gamma di farmaci da banco e su prescrizione medica, integratori alimentari, prodotti per la cura della persona e molto altro ancora. Siamo qui per soddisfare tutte le vostre esigenze di salute e benessere.</p>
+        <h2>Il nostro impegno</h2>
+        <p>La vostra sicurezza è la nostra priorità. Tutti i nostri prodotti sono garantiti autentici e rispettano gli standard di qualità più elevati. Ci impegniamo a proteggere la vostra privacy e a fornire un servizio di spedizione rapido e discreto.</p>
+        <br>
+          <h1><img src="/img/dott.png" width="450" height="auto" ></h1>
+          <br>
+        <h5 style="display: block; text-align: center; margin-bottom: 10px;"><a asp-area="" asp-controller="Home" asp-action="Farmaci">VAI ALLO SHOP</a></h5>
+    </div>
+</body>
+
+

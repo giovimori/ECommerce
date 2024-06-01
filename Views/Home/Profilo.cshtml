@@ -1,0 +1,17 @@
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+@model dbContext
+@{
+    ViewData["Title"] = "Profilo";
+}
+<h2>Benvenuto, @HttpContextAccessor?.HttpContext?.Session.GetString("UserName")
+</h2>
+
+
+<p>Ecco i tuoi dettagli:</p>
+<ul>
+    <li><strong>Nome Utente:</strong> @HttpContextAccessor?.HttpContext?.Session.GetString("UserName")</li>
+    <li><strong>Email:</strong> @HttpContextAccessor?.HttpContext?.Session.GetString("EMail")</li>
+</ul>
+

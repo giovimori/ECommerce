@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Logout";
+}
+
+<style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #008000;
+        }
+        h2 {
+            color: #b1c4a7;
+        }
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+        button {
+            background-color: #008000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+       
+    </style>
+<h1>Logout</h1>
+
+<form asp-controller="Home" asp-action="p2" method="post">
+    <div>
+    <p>Sei sicuro di voler uscire dal tuo account?</p>
+    <p>ATTENZIONE! Se hai inserito prodotti nel carrello, verranno eliminati</p>
+<button type="submit" class="button">Esci</button>    </div>
+</form>
+

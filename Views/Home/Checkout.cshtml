@@ -1,0 +1,162 @@
+@model List<CartItem>
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #008000;
+        margin: 0 0 20px 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 15px; 
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    td {
+        background-color: #fff;
+    }
+
+    .free-shipping {
+        text-align: right;
+        font-weight: bold;
+        font-size: 1.2em;
+        color: #008000;
+    }
+
+    .checkout-button {
+        text-align: right;
+        margin-top: 20px;
+    }
+
+    .checkout-button .button {
+        background-color: #008000;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+     .payment-methods img {
+        margin: 0 25px; 
+        width: 90px;
+        height: auto;
+    }
+      button {
+            background-color: #008000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+</style>
+
+
+    <h1>Checkout</h1>
+    @if (!Model.Any())
+    {
+        <p>Il carrello è vuoto</p>
+        <p><a asp-area="" asp-controller="Home" asp-action="Farmaci">Vai allo Shop</a></p>
+    }
+    else
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome Prodotto</th>
+                    <th>Quantità</th>
+                    <th>Prezzo unitario</th>
+                    <th>Totale</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Price.ToString("C")</td>
+                        <td>@(item.Price * item.Quantity)0 €</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        
+            var subtotal = Model.Sum(item => item.Price * item.Quantity);
+            var freeShippingThreshold = 30m;
+            var shippingCost = subtotal >= freeShippingThreshold ? 0m : 5m; 
+            var total = subtotal + shippingCost;
+        
+
+        <div class="subtotal">
+            <p>Subtotale: @subtotal.ToString("C")</p>
+        </div>
+        <div class="shipping-cost">
+            <p>Spedizione: @(shippingCost == 0 ? "Gratuita" : shippingCost.ToString("C"))</p>
+        </div>
+        <div class="free-shipping">
+            @if (subtotal >= freeShippingThreshold)
+            {
+                <p>Consegna gratuita!</p>
+            }
+            else
+            {
+                <p>Spesa minima di @freeShippingThreshold.ToString("C") per la consegna gratuita</p>
+            }
+        </div>
+        <div class="total">
+            <h3>Totale: @total.ToString("C")</h3>
+        </div>
+     <form asp-action="Conferma" method="post">
+    <button type="submit" class="button">Conferma ordine</button>
+</form>
+        <div>
+            <p><a asp-action="Carrello">Torna indietro</a></p>
+        </div>
+        <br><br>
+            <strong style="display: block; text-align: center; margin-bottom: 10px;">PAGAMENTI SICURI</strong>         
+            <div class="payment-methods">
+            <img src="/img/visa.png" alt="Visa" width="90" height="auto" > 
+            <img src="/img/mastercard.svg" alt="MasterCard" width="90" height="auto" >
+            <img src="/img/paypal.svg" alt="PayPal" width="70" height="auto" >
+            <img src="/img/american.png" alt="American Express" width="90" height="auto">
+            <img src="/img/stripe.svg" alt="Discover" width="90" height="auto" >
+        </div>
+    }
+</div>

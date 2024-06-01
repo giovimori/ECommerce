@@ -1,0 +1,64 @@
+
+@model basilico.karol._5h.Ecommerce.Models.Utente;
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    ViewData["Title"] = "Login";
+}
+<style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #008000;
+        }
+        h2 {
+            color: #b1c4a7;
+        }
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+         button {
+            background-color: #008000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+
+
+    <h1>Grazie</h1>
+    <p>Il tuo ordine è stato correttamente registrato!</p>
+    <p>Abbiamo mandato una email al tuo indirizzo 
+    <a href="mailto:@HttpContextAccessor.HttpContext.Session.GetString("EMail")">
+    @HttpContextAccessor.HttpContext.Session.GetString("EMail")
+</a>
+    con tutti i dettagli.
+    
+<div>
+    <a asp-action="Ordini">I tuoi ordini</a>
+</div>
+
+    
+        
+

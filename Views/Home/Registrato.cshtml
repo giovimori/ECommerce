@@ -1,0 +1,38 @@
+@model dbContext
+@{
+    ViewData["Title"] = "Registrato";
+}
+
+<h2>Grazie @Model.Nome</h2>
+<p>per esserti registrato</p>
+<p>Sono stati registrati @Model.Utenti.Count() utenti...</p>
+
+<!--
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Indirizzo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in @Model.Utenti)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Cognome</td>
+                <td>@item.EMail</td>
+                <td>@item.Password</td>
+                <td>@item.Indirizzo</td>
+               
+                
+            </tr>
+        }
+    </tbody>
+</table>
+-->
+
+<h4><a asp-area="" asp-controller="Home" asp-action="Login">VAI AL LOGIN</a></h4>

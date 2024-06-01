@@ -1,0 +1,88 @@
+@model IEnumerable<basilico.karol._5h.Ecommerce.Models.Prodotto>
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+      
+        h1 {
+            text-align: center;
+            color: #008000;
+        }
+        h2 {
+            color: #b1c4a7;
+        }
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+         button {
+            background-color: #008000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+<b>Mail admin:</b> 
+@HttpContextAccessor?.HttpContext?.Session.GetString("EMail")
+<br><br>
+<h1 align="center">Lista prodotti disponibili</h1>
+<p align="center">Aggiorna l'elenco dei prodotti in HomePage:</p>
+
+<p>
+    <a asp-action="Create">Aggiungi nuovo prodotto</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descrizione)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezzo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descrizione)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezzo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdP">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdP">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdP">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Admin">Torna indietro</a>
+</p>
