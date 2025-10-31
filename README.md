@@ -1,2 +1,2 @@
-Sito web ASP.NET creato tramite Visual Studio Code, rappresenta un sito di ECommerce legato alla distribuzione di materiale farmaceutico via web. Sono presenti varie sezioni: registrazione dell'utente, Login, Logout, registrazione di nuovi utenti, prodotti, carrello, checkout. 
+Sito web ASP.NET creato tramite Visual Studio Code, rappresenta un sito di ECommerce legato alla vendita di materiale farmaceutico via web. Sono presenti varie sezioni: registrazione dell'utente, Login, Logout, registrazione di nuovi utenti, prodotti, carrello, checkout. 
 L'intero progetto si basa su un database contenente le informazioni di utenti e prodotti, vengono usate anche le sessioni.
